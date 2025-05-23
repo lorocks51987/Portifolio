@@ -11,7 +11,7 @@
             class="block bg-zinc-900/50 rounded-lg border border-zinc-800 overflow-hidden hover:border-zinc-700 transition-all duration-300 group"
           >
             <div class="p-6">
-              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">Apresentação do Projeto <br>ComTailwind CSS</h3>
+              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">Apresentação do Projeto <br>Com Tailwind CSS</h3>
               <p class="text-zinc-400 text-sm mb-4">
                 Site em grupo desenvolvido com Tailwind CSS, apresentando o projeto da materia Fabrica de Projetos.
               </p>
