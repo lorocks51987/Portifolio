@@ -1,12 +1,31 @@
 <script setup>
+import { onMounted } from 'vue'
 import Navbar from './components/NavbarComponent.vue'
 import Footer from './components/FooterComponent.vue'
 import SplineRobot from './components/SplineRobot.vue'
 import Background3D from './components/Background3D.vue'
+
+// VLibras Script
+onMounted(() => {
+  const script = document.createElement('script')
+  script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
+  script.onload = () => {
+    new window.VLibras.Widget()
+  }
+  document.head.appendChild(script)
+})
 </script>
 
 <template>
   <div class="app-container">
+    <!-- VLibras Widget -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+
     <Background3D />
     <div class="content-wrapper">
       <Navbar />
@@ -54,7 +73,7 @@ body {
 
 /* Melhorias de legibilidade para textos */
 h1, h2, h3, h4, h5, h6 {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   color: #ffffff !important;
 }
 
@@ -158,5 +177,40 @@ p, span, a, li {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* Estilização do VLibras */
+div[vw].enabled {
+  position: fixed !important;
+  z-index: 9999 !important;
+}
+
+div[vw] .access-button {
+  background: rgba(24, 24, 27, 0.9) !important;
+  border: 2px solid rgb(63, 63, 70) !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+div[vw] .access-button:hover {
+  background: rgba(39, 39, 42, 0.9) !important;
+  border-color: rgb(82, 82, 91) !important;
+  transform: translateY(-2px) !important;
+}
+
+div[vw] .access-button .icon {
+  fill: #d4d4d8 !important;
+}
+
+div[vw] .access-button:hover .icon {
+  fill: #e4e4e7 !important;
+}
+
+/* Ajuste do wrapper do plugin */
+div[vw] .vw-plugin-wrapper {
+  backdrop-filter: blur(8px) !important;
+  background: rgba(24, 24, 27, 0.8) !important;
+  border: 1px solid rgb(63, 63, 70) !important;
+  border-radius: 12px !important;
 }
 </style>

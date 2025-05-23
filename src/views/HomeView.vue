@@ -16,22 +16,12 @@
           Sou estagiário em desenvolvimento de software, apaixonado por tecnologia, programação e fotografia.
           Estou sempre buscando aprender coisas novas e crescer na área.
         </p>
-        <div class="flex justify-center gap-4">
-          <router-link to="/sobre"
-            class="bg-zinc-800 text-zinc-100 px-6 py-3 rounded-lg hover:bg-zinc-700 transition-colors">
-            Conheça meu trabalho
-          </router-link>
-          <router-link to="/contato"
-            class="bg-zinc-900 text-zinc-300 px-6 py-3 rounded-lg hover:bg-zinc-800 transition-colors border border-zinc-800">
-            Entre em contato
-          </router-link>
-        </div>
       </div>
 
       <!-- Featured Skills/Experience -->
       <div class="grid md:grid-cols-2 gap-8 mt-16">
-        <div class="bg-zinc-900/50 p-8 rounded-lg border border-zinc-800">
-          <h2 class="text-xl font-semibold text-zinc-100 mb-6 text-center mb-10">Principais Habilidades</h2>
+        <div class="bg-zinc-900/80 p-8 rounded-lg border border-zinc-800">
+          <h2 class="text-xl font-semibold text-zinc-100 mb-6 text-center mb-12">Principais Habilidades</h2>
           <div class="flex flex-wrap gap-6 justify-center">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" title="HTML"
               alt="HTML" class="w-8 h-8 text-zinc-300" />
@@ -41,14 +31,16 @@
               title="JavaScript" alt="JavaScript" class="w-8 h-8 text-zinc-300" />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" title="PHP"
               alt="PHP" class="w-8 h-8 text-zinc-300" />
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"
-              title="Python" alt="Python" class="w-8 h-8 text-zinc-300" />
+            </div>
+            <div class="flex flex-wrap gap-6 justify-center mt-10" >
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" title="Vue.js"
               alt="Vue.js" class="w-8 h-8 text-zinc-300" />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
               title="Tailwind CSS" alt="Tailwind CSS" class="w-8 h-8 text-zinc-300" />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" title="MySQL"
               alt="MySQL" class="w-8 h-8 text-zinc-300" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg" title="Oracle"
+              alt="Oracle" class="w-8 h-8 text-zinc-300" />
           </div>
         </div>
 

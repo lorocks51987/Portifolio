@@ -137,20 +137,4 @@ const isOpen = ref(false)
 .nav-link.active::after {
   width: 100%;
 }
-
-/* Animação do menu mobile */
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.md:hidden > div {
-  animation: slideDown 0.2s ease-out;
-}
 </style> 
