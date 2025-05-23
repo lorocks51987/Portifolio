@@ -13,7 +13,7 @@
           Olá, eu sou <span class="text-zinc-400">Luiz Henrique</span>
         </h1>
         <p class="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed text-content">
-          Sou estagiário em desenvolvimento de software, apaixonado por tecnologia, programação e fotografia.
+          Estagiário em desenvolvimento de software, apaixonado por tecnologia, programação e fotografia.
           Estou sempre buscando aprender coisas novas e crescer na área.
         </p>
       </div>
