@@ -11,7 +11,7 @@ import { Application } from '@splinetool/runtime'
 onMounted(() => {
   const canvas = document.getElementById('background3d')
   const app = new Application(canvas)
-  app.load('https://prod.spline.design/dnUzpjAuLSccaqd0/scene.splinecode')
+  app.load('/Portifolio/scene.splinecode')
 })
 </script>
 
