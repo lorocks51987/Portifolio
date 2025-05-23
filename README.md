@@ -1,105 +1,75 @@
-# Portfólio 3D
 
-Um portfólio profissional e moderno que combina design contemporâneo com interatividade 3D. Este projeto foi desenvolvido para criar uma experiência única e memorável para os visitantes, destacando projetos e habilidades de forma criativa e envolvente.
+# 📁 Portfólio Pessoal – Projeto Acadêmico
 
-## 💡 Sobre o Projeto
+Este é meu portfólio pessoal, desenvolvido como parte de um trabalho acadêmico. O objetivo foi colocar em prática os conceitos de Vue 3, Vue Router e Tailwind CSS, criando uma aplicação simples, organizada e funcional.
 
-Este portfólio se destaca por suas características únicas:
 
-- **Background 3D Interativo**: Utilizando a tecnologia Spline, o fundo da página apresenta uma animação 3D que responde aos movimentos do mouse, criando uma experiência imersiva.
-- **Design Responsivo**: Adaptável a qualquer dispositivo (desktop, tablet ou celular)
-- **Performance Otimizada**: Carregamento rápido mesmo com elementos 3D
-- **Interface Moderna**: Design minimalista e elegante que destaca o conteúdo
+![image](https://github.com/user-attachments/assets/138bd983-0359-4ff0-9064-0dcf86adf723)
 
-## 🎯 Funcionalidades
+![image](https://github.com/user-attachments/assets/1d961806-aab3-44c2-9fe2-f4779a9cc87d)
 
-- Navegação suave e intuitiva
-- Animações 3D interativas no background
-- Seções organizadas para:
-  - Apresentação pessoal
-  - Projetos realizados
-  - Habilidades técnicas
-  - Experiência profissional
-  - Formulário de contato
+![image](https://github.com/user-attachments/assets/269e5522-494f-4663-805a-ba73b0d8807d)
+
+![image](https://github.com/user-attachments/assets/f1bbb446-346f-4c33-876a-0d2ee8f95f6c)
+
 
 ## 🚀 Tecnologias Utilizadas
 
-- Vue.js 3
-- Spline (para animações 3D)
-- HTML5
-- CSS3
+- Vue 3 (Composition API)
+- Vite
+- Vue Router
+- Tailwind CSS (via CDN)
 
-## ✨ Características
+## 🎯 Funcionalidades
 
-- Design moderno e responsivo
-- Background 3D interativo
-- Animações suaves
-- Interface intuitiva
+- **Home:** Apresentação pessoal.
+- **Sobre:** Habilidades, formação e trajetória.
+- **Peojeto:** Outros projetos desenvolvidos por mim.
+- **Contato:** Formulário de contato (não funcional) e redes sociais.
 
-## 📦 Pré-requisitos
+## 🏗️ Estrutura do Projeto
 
-- Node.js (versão 14 ou superior)
-- NPM ou Yarn
+```
+portfolio/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── Header.vue
+│   │   └── Footer.vue
+│   ├── views/
+│   │   ├── Home.vue
+│   │   ├── Sobre.vue
+│   │   └── Contato.vue
+│   ├── App.vue
+│   └── main.js
+├── public/
+└── package.json
+```
 
-## 🛠️ Instalação
+## 💻 Como Rodar
 
 1. Clone o repositório:
 ```bash
 git clone https://github.com/lorocks51987/Portifolio.git
 ```
 
-2. Entre no diretório do projeto:
+2. Acesse a pasta do projeto:
 ```bash
-cd portfolio
+cd Portifolio
 ```
 
 3. Instale as dependências:
 ```bash
 npm install
-# ou
-yarn install
 ```
 
-4. Inicie o servidor de desenvolvimento:
+4. Rode o projeto:
 ```bash
 npm run dev
-# ou
-yarn dev
 ```
 
-O projeto estará disponível em `http://localhost:5173`
-
-## 🚀 Deploy
-
-Este projeto pode ser facilmente deployado em várias plataformas gratuitas:
-
-- Netlify
-- Vercel
-- GitHub Pages
-- Firebase Hosting
-- Render
-
-## 📝 Estrutura do Projeto
-
-```
-portfolio/
-├── src/
-│   ├── components/
-│   │   └── Background3D.vue
-│   ├── assets/
-│   └── App.vue
-├── public/
-└── package.json
-```
-
-## 🤝 Contribuindo
-
-Contribuições são sempre bem-vindas! Sinta-se à vontade para abrir uma issue ou fazer um pull request.
-
-## 📫 Contato
-
-[Seus dados de contato aqui]
+Acesse em `http://localhost:5173`.
 
 ## 📄 Licença
 
-Este projeto está sob a licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para mais detalhes.
+Este projeto é livre para uso acadêmico e pessoal.
