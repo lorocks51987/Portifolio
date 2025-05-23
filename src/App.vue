@@ -2,20 +2,24 @@
 import Navbar from './components/NavbarComponent.vue'
 import Footer from './components/FooterComponent.vue'
 import SplineRobot from './components/SplineRobot.vue'
+import Background3D from './components/Background3D.vue'
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen bg-[#0a0a0a]">
-    <Navbar />
-    <SplineRobot />
+  <div class="app-container">
+    <Background3D />
+    <div class="content-wrapper">
+      <Navbar />
+      <SplineRobot />
 
-    <div class="main container mx-auto px-4 py-6 flex-grow">
-      <router-view v-slot="{ Component }">
-        <component :is="Component" />
-      </router-view>
+      <div class="main container mx-auto px-4 py-6 flex-grow">
+        <router-view v-slot="{ Component }">
+          <component :is="Component" />
+        </router-view>
+      </div>
+
+      <Footer />
     </div>
-
-    <Footer />
   </div>
 </template>
 
@@ -29,9 +33,58 @@ import SplineRobot from './components/SplineRobot.vue'
   font-family: 'Inter', sans-serif;
 }
 
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background: transparent;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
 body {
-  background-color: #0a0a0a;
+  background: transparent;
   color: #fff;
+  overflow-x: hidden;
+}
+
+/* Melhorias de legibilidade para textos */
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  color: #ffffff !important;
+}
+
+p, span, a, li {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Adiciona um fundo semi-transparente aos textos sem caixa */
+.text-content {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ajusta a opacidade dos textos para melhor contraste */
+.text-zinc-300 {
+  color: #e4e4e7 !important;
+  opacity: 1;
+}
+
+.text-zinc-400 {
+  color: #d4d4d8 !important;
+  opacity: 1;
+}
+
+.text-zinc-500 {
+  color: #a1a1aa !important;
+  opacity: 1;
 }
 
 /* Estilização global da barra de rolagem */
