@@ -8,11 +8,16 @@
   import { onMounted } from 'vue'
   import { Application } from '@splinetool/runtime'
   
-  onMounted(() => {
-    const canvas = document.getElementById('canvas3d')
-    const app = new Application(canvas)
-    const basePath = import.meta.env.BASE_URL
-    app.load(`${basePath}scene.splinecode`)
+  onMounted(async () => {
+    try {
+      const canvas = document.getElementById('canvas3d')
+      const app = new Application(canvas)
+      const basePath = import.meta.env.BASE_URL || '/'
+      console.log('Tentando carregar:', `${basePath}scene.splinecode`)
+      await app.load(`${basePath}scene.splinecode`)
+    } catch (error) {
+      console.error('Erro ao carregar o modelo 3D:', error)
+    }
   })
   </script>
   

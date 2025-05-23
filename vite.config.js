@@ -11,7 +11,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: undefined,
-        assetFileNames: 'assets/[name].[hash].[ext]',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name.endsWith('.splinecode')) {
+            return '[name].[ext]'
+          }
+          return 'assets/[name].[hash].[ext]'
+        },
         chunkFileNames: 'assets/[name].[hash].js',
         entryFileNames: 'assets/[name].[hash].js'
       }
