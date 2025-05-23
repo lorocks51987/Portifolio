@@ -5,18 +5,29 @@
   </template>
   
   <script setup>
-  import { onMounted } from 'vue'
+  import { onMounted, onUnmounted } from 'vue'
   import { Application } from '@splinetool/runtime'
+  
+  let app = null
   
   onMounted(async () => {
     try {
       const canvas = document.getElementById('canvas3d')
-      const app = new Application(canvas)
+      app = new Application(canvas)
       const basePath = import.meta.env.BASE_URL || '/'
-      console.log('Tentando carregar:', `${basePath}scene.splinecode`)
-      await app.load(`${basePath}scene.splinecode`)
+      // Adiciona timestamp para evitar cache
+      const timestamp = new Date().getTime()
+      await app.load(`${basePath}scene.splinecode?v=${timestamp}`)
     } catch (error) {
       console.error('Erro ao carregar o modelo 3D:', error)
+    }
+  })
+  
+  // Limpa a instância quando o componente é destruído
+  onUnmounted(() => {
+    if (app) {
+      app.dispose()
+      app = null
     }
   })
   </script>
