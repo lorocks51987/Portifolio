@@ -63,6 +63,7 @@ onMounted(() => {
 .content-wrapper {
   position: relative;
   z-index: 1;
+  padding: 1rem;
 }
 
 body {
@@ -212,5 +213,64 @@ div[vw] .vw-plugin-wrapper {
   background: rgba(24, 24, 27, 0.8) !important;
   border: 1px solid rgb(63, 63, 70) !important;
   border-radius: 12px !important;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 0.5rem;
+  }
+
+  .main {
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  .text-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.25rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .text-content {
+    padding: 0.75rem;
+  }
+}
+
+/* Ajuste do VLibras para mobile */
+@media (max-width: 768px) {
+  div[vw].enabled {
+    transform: scale(0.8);
+    transform-origin: bottom right;
+  }
 }
 </style>

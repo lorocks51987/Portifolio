@@ -47,4 +47,34 @@
     height: 100%;
     display: block;
   }
+
+  /* Dispositivos muito pequenos (smartphones em modo retrato) */
+  @media (max-width: 480px) {
+    .robot-container {
+      width: 200px;
+      height: 200px;
+      top: 10px;
+      left: 10px;
+    }
+  }
+
+  /* Tablets e smartphones em modo paisagem */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .robot-container {
+      width: 250px;
+      height: 250px;
+      top: 15px;
+      left: 15px;
+    }
+  }
+
+  /* Dispositivos em modo paisagem com altura pequena */
+  @media (max-height: 500px) {
+    .robot-container {
+      width: 150px;
+      height: 150px;
+      top: 10px;
+      left: 10px;
+    }
+  }
   </style>

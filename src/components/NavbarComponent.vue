@@ -1,10 +1,10 @@
 <template>
-  <nav class="bg-zinc-900/50 backdrop-blur-sm border-b border-zinc-800">
+  <nav class="bg-zinc-900/50 backdrop-blur-sm border-b border-zinc-800 fixed w-full top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
         <div class="flex-shrink-0">
-          <router-link to="/" class="text-zinc-100 font-bold text-xl">
+          <router-link to="/" class="text-zinc-100 font-bold text-xl hover:text-zinc-300 transition-colors">
             Luiz Henrique
           </router-link>
         </div>
@@ -13,32 +13,13 @@
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
             <router-link
-              to="/"
-              class="text-zinc-300 hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium"
+              v-for="(link, index) in links"
+              :key="index"
+              :to="link.to"
+              class="nav-link relative text-zinc-300 hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium transition-colors"
               active-class="text-zinc-100 bg-zinc-800"
             >
-              Início
-            </router-link>
-            <router-link
-              to="/sobre"
-              class="text-zinc-300 hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium"
-              active-class="text-zinc-100 bg-zinc-800"
-            >
-              Sobre
-            </router-link>
-            <router-link
-              to="/projetos"
-              class="text-zinc-300 hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium"
-              active-class="text-zinc-100 bg-zinc-800"
-            >
-              Projetos
-            </router-link>
-            <router-link
-              to="/contato"
-              class="text-zinc-300 hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium"
-              active-class="text-zinc-100 bg-zinc-800"
-            >
-              Contato
+              {{ link.text }}
             </router-link>
           </div>
         </div>
@@ -46,8 +27,10 @@
         <!-- Menu Mobile -->
         <div class="md:hidden">
           <button
-            @click="isOpen = !isOpen"
-            class="text-zinc-300 hover:text-zinc-100 focus:outline-none"
+            @click="toggleMenu"
+            class="text-zinc-300 hover:text-zinc-100 focus:outline-none transition-colors p-2 rounded-md"
+            :aria-expanded="isOpen"
+            aria-label="Menu principal"
           >
             <svg
               class="h-6 w-6"
@@ -76,42 +59,29 @@
     </div>
 
     <!-- Menu Mobile Expandido -->
-    <div v-show="isOpen" class="md:hidden">
-      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <router-link
-          to="/"
-          class="text-zinc-300 hover:text-zinc-100 block px-3 py-2 rounded-md text-base font-medium"
-          active-class="text-zinc-100 bg-zinc-800"
-          @click="isOpen = false"
-        >
-          Início
-        </router-link>
-        <router-link
-          to="/sobre"
-          class="text-zinc-300 hover:text-zinc-100 block px-3 py-2 rounded-md text-base font-medium"
-          active-class="text-zinc-100 bg-zinc-800"
-          @click="isOpen = false"
-        >
-          Sobre
-        </router-link>
-        <router-link
-          to="/projetos"
-          class="text-zinc-300 hover:text-zinc-100 block px-3 py-2 rounded-md text-base font-medium"
-          active-class="text-zinc-100 bg-zinc-800"
-          @click="isOpen = false"
-        >
-          Projetos
-        </router-link>
-        <router-link
-          to="/contato"
-          class="text-zinc-300 hover:text-zinc-100 block px-3 py-2 rounded-md text-base font-medium"
-          active-class="text-zinc-100 bg-zinc-800"
-          @click="isOpen = false"
-        >
-          Contato
-        </router-link>
+    <transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="transform -translate-y-4 opacity-0"
+      enter-to-class="transform translate-y-0 opacity-100"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="transform translate-y-0 opacity-100"
+      leave-to-class="transform -translate-y-4 opacity-0"
+    >
+      <div v-show="isOpen" class="md:hidden bg-zinc-900/95 backdrop-blur-sm">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <router-link
+            v-for="(link, index) in links"
+            :key="index"
+            :to="link.to"
+            class="text-zinc-300 hover:text-zinc-100 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+            active-class="text-zinc-100 bg-zinc-800"
+            @click="closeMenu"
+          >
+            {{ link.text }}
+          </router-link>
+        </div>
       </div>
-    </div>
+    </transition>
   </nav>
 </template>
 
@@ -119,9 +89,35 @@
 import { ref } from 'vue'
 
 const isOpen = ref(false)
+
+const links = [
+  { to: '/', text: 'Início' },
+  { to: '/sobre', text: 'Sobre' },
+  { to: '/projetos', text: 'Projetos' },
+  { to: '/contato', text: 'Contato' }
+]
+
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value
+  if (isOpen.value) {
+    document.body.style.overflow = 'hidden'
+  } else {
+    document.body.style.overflow = ''
+  }
+}
+
+const closeMenu = () => {
+  isOpen.value = false
+  document.body.style.overflow = ''
+}
 </script>
 
 <style scoped>
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
 .nav-link::after {
   content: '';
   position: absolute;
@@ -134,7 +130,20 @@ const isOpen = ref(false)
 }
 
 .nav-link:hover::after,
-.nav-link.active::after {
+.nav-link.router-link-active::after {
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .nav-link::after {
+    display: none;
+  }
+}
+
+/* Ajuste para telas muito pequenas */
+@media (max-width: 360px) {
+  .text-xl {
+    font-size: 1rem;
+  }
 }
 </style> 
