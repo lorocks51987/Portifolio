@@ -1,6 +1,6 @@
 <template>
     <div class="robot-container">
-      <canvas id="canvas3d" width="400" height="400"></canvas>
+      <canvas id="canvas3d"></canvas>
     </div>
   </template>
   
@@ -11,7 +11,8 @@
   onMounted(() => {
     const canvas = document.getElementById('canvas3d')
     const app = new Application(canvas)
-    app.load('/scene.splinecode')
+    const basePath = import.meta.env.BASE_URL
+    app.load(`${basePath}scene.splinecode`)
   })
   </script>
   
@@ -24,6 +25,7 @@
     height: 350px;
     z-index: 1000;
   }
+  
   canvas {
     width: 100%;
     height: 100%;
