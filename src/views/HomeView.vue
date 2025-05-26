@@ -3,16 +3,19 @@
     <!-- Hero Section -->
     <div class="max-w-5xl mx-auto px-4">
       <div class="text-center mb-20">
+        <!-- Efeito de Digitação -->
+
         <!-- Foto de perfil -->
         <div class="mb-8">
           <img :src="profileImage" alt="Luiz Henrique"
             class="w-48 h-48 rounded-full mx-auto border-4 border-zinc-800 shadow-zinc-900/20 shadow-lg object-cover" />
         </div>
 
-        <h1 class="text-4xl font-bold text-zinc-100 mb-6 ">
-          Olá, eu sou <span class="text-zinc-400">Luiz Henrique</span>
-        </h1>
-        <p class="text-lg text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed text-content">
+        <div class="mb-8">
+          <TypingSVG class="mb-8" text="Olá, eu sou Luiz Henrique" color="ffffff" :size="45" />
+        </div>
+
+        <p class="text-xl text-zinc-300 mb-8 max-w-2xl mx-auto leading-relaxed text-content font-light">
           Estagiário em desenvolvimento de software, apaixonado por tecnologia, programação e fotografia.
           Estou sempre buscando aprender coisas novas e crescer na área.
         </p>
@@ -20,45 +23,45 @@
 
       <!-- Featured Skills/Experience -->
       <div class="grid md:grid-cols-2 gap-8 mt-16">
-        <div class="bg-zinc-900/80 p-8 rounded-lg border border-zinc-800">
-          <h2 class="text-xl font-semibold text-zinc-100 mb-6 text-center mb-12">Principais Habilidades</h2>
+        <div class="bg-gradient-to-br from-zinc-900/90 to-zinc-800/90 p-8 rounded-xl border border-zinc-700/50 shadow-xl backdrop-blur-sm hover:border-zinc-600/50 transition-all duration-300">
+          <h2 class="text-2xl font-semibold text-zinc-100 mb-6 text-center mb-12 bg-gradient-to-r from-zinc-100 to-zinc-300 bg-clip-text text-transparent">Principais Habilidades</h2>
           <div class="flex flex-wrap gap-6 justify-center">
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" title="HTML"
-              alt="HTML" class="w-8 h-8 text-zinc-300" />
+              alt="HTML" class="w-10 h-10 text-zinc-300 hover:scale-110 transition-transform duration-300" />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-plain.svg" title="CSS"
-              alt="CSS" class="w-8 h-8 text-zinc-300" />
+              alt="CSS" class="w-10 h-10 text-zinc-300 hover:scale-110 transition-transform duration-300" />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg"
-              title="JavaScript" alt="JavaScript" class="w-8 h-8 text-zinc-300" />
+              title="JavaScript" alt="JavaScript" class="w-10 h-10 text-zinc-300 hover:scale-110 transition-transform duration-300" />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" title="PHP"
-              alt="PHP" class="w-8 h-8 text-zinc-300" />
+              alt="PHP" class="w-10 h-10 text-zinc-300 hover:scale-110 transition-transform duration-300" />
             </div>
             <div class="flex flex-wrap gap-6 justify-center mt-10" >
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" title="Vue.js"
-              alt="Vue.js" class="w-8 h-8 text-zinc-300" />
+              alt="Vue.js" class="w-10 h-10 text-zinc-300 hover:scale-110 transition-transform duration-300" />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-              title="Tailwind CSS" alt="Tailwind CSS" class="w-8 h-8 text-zinc-300" />
+              title="Tailwind CSS" alt="Tailwind CSS" class="w-10 h-10 text-zinc-300 hover:scale-110 transition-transform duration-300" />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" title="MySQL"
-              alt="MySQL" class="w-8 h-8 text-zinc-300" />
+              alt="MySQL" class="w-10 h-10 text-zinc-300 hover:scale-110 transition-transform duration-300" />
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg" title="Oracle"
-              alt="Oracle" class="w-8 h-8 text-zinc-300" />
+              alt="Oracle" class="w-10 h-10 text-zinc-300 hover:scale-110 transition-transform duration-300" />
           </div>
         </div>
 
-        <div class="bg-[#1e1e1e] p-4 rounded-lg border border-zinc-800 font-mono">
+        <div class="bg-gradient-to-br from-[#1e1e1e] to-[#2d2d2d] p-6 rounded-xl border border-zinc-700/50 shadow-xl backdrop-blur-sm hover:border-zinc-600/50 transition-all duration-300 font-mono">
           <!-- Editor Header -->
-          <div class="flex items-center justify-between mb-4 border-b border-zinc-800 pb-2">
+          <div class="flex items-center justify-between mb-4 border-b border-zinc-700/50 pb-2">
             <div class="flex items-center gap-2">
-              <div class="w-3 h-3 rounded-full bg-red-500"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-              <div class="w-3 h-3 rounded-full bg-green-500"></div>
+              <div class="w-3 h-3 rounded-full bg-red-500 shadow-sm"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500 shadow-sm"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500 shadow-sm"></div>
             </div>
-            <span class="text-zinc-500 text-sm">destaques.js</span>
+            <span class="text-zinc-400 text-sm font-medium">destaques.js</span>
           </div>
 
           <!-- Code Content -->
           <div class="relative">
             <!-- Line Numbers -->
-            <div class="absolute left-0 top-0 bottom-0 w-12 flex flex-col text-zinc-600 text-sm select-none">
+            <div class="absolute left-0 top-0 bottom-0 w-12 flex flex-col text-zinc-500 text-sm select-none">
               <span class="px-2">1</span>
               <span class="px-2">2</span>
               <span class="px-2">3</span>
@@ -100,6 +103,7 @@
 
 <script setup>
 import profileImage from '../assets/perfil.png'
+import TypingSVG from '../components/TypingSVG.vue'
 </script>
 
 <style scoped>

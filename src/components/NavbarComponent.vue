@@ -1,6 +1,6 @@
 <template>
   <nav class="bg-zinc-900/50 backdrop-blur-sm border-b border-zinc-800 fixed w-full top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
         <div class="flex-shrink-0">
@@ -67,7 +67,7 @@
       leave-from-class="transform translate-y-0 opacity-100"
       leave-to-class="transform -translate-y-4 opacity-0"
     >
-      <div v-show="isOpen" class="md:hidden bg-zinc-900/95 backdrop-blur-sm">
+      <div v-show="isOpen" class="md:hidden w-full bg-zinc-900/95 backdrop-blur-sm">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           <router-link
             v-for="(link, index) in links"
@@ -146,4 +146,4 @@ const closeMenu = () => {
     font-size: 1rem;
   }
 }
-</style> 
+</style>

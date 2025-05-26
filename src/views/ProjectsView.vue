@@ -3,7 +3,9 @@
     <div class="max-w-7xl mx-auto px-4">
       <!-- Projetos -->
       <div class="mt-16">
-        <h2 class="text-2xl font-semibold text-zinc-100 mb-8 text-center">Projetos em Destaque</h2>
+        <div class="mb-8">
+          <TypingSVG class="mb-8" text="Projetos em Destaque" color="ffffff" :size="45" />
+        </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Projeto 1 -->
           <a 
@@ -135,3 +137,7 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import TypingSVG from '../components/TypingSVG.vue'
+</script>

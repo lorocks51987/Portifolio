@@ -14,7 +14,7 @@
         <h2 class="text-2xl font-semibold text-zinc-100 mb-6">Habilidades Técnicas</h2>
         <div class="grid md:grid-cols-2 gap-6">
           <!-- Frontend -->
-          <div class="bg-zinc-900/50 p-8 rounded-lg border border-zinc-800">
+          <div class="bg-zinc-900/80 p-8 rounded-lg border border-zinc-800">
             <h3 class="text-xl font-semibold text-zinc-300 mb-6">Frontend</h3>
             <div class="grid grid-cols-3 gap-6 justify-items-center">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-plain.svg" title="HTML" alt="HTML" class="w-10 h-10 transition-transform hover:scale-110 hover:brightness-125" style="filter: brightness(85%);" />
@@ -27,7 +27,7 @@
           </div>
 
           <!-- Backend & Ferramentas -->
-          <div class="bg-zinc-900/50 p-8 rounded-lg border border-zinc-800">
+          <div class="bg-zinc-900/80 p-8 rounded-lg border border-zinc-800">
             <h3 class="text-xl font-semibold text-zinc-300 mb-6">Backend & Ferramentas</h3>
             <div class="grid grid-cols-3 gap-6 justify-items-center">
               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" title="PHP" alt="PHP" class="w-10 h-10 transition-transform hover:scale-110 hover:brightness-125" style="filter: brightness(85%);" />
@@ -44,7 +44,7 @@
       <!-- Seção de Experiência -->
       <div class="mb-12">
         <h2 class="text-2xl font-semibold text-zinc-100 mb-6">Experiência</h2>
-        <div class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800 space-y-6">
+        <div class="bg-zinc-900/70 p-6 rounded-lg border border-zinc-800 space-y-6">
           <div class="border-l-4 border-zinc-700 pl-4">
             <h3 class="text-lg font-semibold text-zinc-200">Estagiário em Desenvolvimento</h3>
             <p class="text-zinc-400">UNIMAR</p>
@@ -57,7 +57,7 @@
           </div>
         </div>
 
-        <div class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800 space-y-6">
+        <div class="bg-zinc-900/70 p-6 rounded-lg border border-zinc-800 space-y-6">
           <div class="border-l-4 border-zinc-700 pl-4">
             <h3 class="text-lg font-semibold text-zinc-200">Instrutor Pedagógico e TI</h3>
             <p class="text-zinc-400">UNIMAR EAD</p>
@@ -70,7 +70,7 @@
           </div>
         </div>
 
-        <div class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800 space-y-6">
+        <div class="bg-zinc-900/70 p-6 rounded-lg border border-zinc-800 space-y-6">
           <div class="border-l-4 border-zinc-700 pl-4">
             <h3 class="text-lg font-semibold text-zinc-200">Aprendiz de Secretaria acadêmica</h3>
             <p class="text-zinc-400">UNIMAR EAD</p>
@@ -87,7 +87,7 @@
       <!-- Seção de Formação -->
       <div>
         <h2 class="text-2xl font-semibold text-zinc-100 mb-6">Formação Acadêmica</h2>
-        <div class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
+        <div class="bg-zinc-900/70 p-6 rounded-lg border border-zinc-800">
           <div class="border-l-4 border-zinc-700 pl-4">
             <h3 class="text-lg font-semibold text-zinc-200">Análise e Desenvolvimento de Sistemas</h3>
             <p class="text-zinc-400">Universidade de Marília (UNIMAR)</p>
@@ -95,7 +95,7 @@
           </div>
         </div>
 
-        <div class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
+        <div class="bg-zinc-900/70 p-6 rounded-lg border border-zinc-800">
           <div class="border-l-4 border-zinc-700 pl-4">
             <h3 class="text-lg font-semibold text-zinc-200">Operador de Computador</h3>
             <p class="text-zinc-400">Senac de Marília</p>
@@ -103,7 +103,7 @@
           </div>
         </div>
 
-        <div class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
+        <div class="bg-zinc-900/70 p-6 rounded-lg border border-zinc-800">
           <div class="border-l-4 border-zinc-700 pl-4">
             <h3 class="text-lg font-semibold text-zinc-200">Programador de Sistemas com C++</h3>
             <p class="text-zinc-400">Senac de Marília</p>
@@ -111,7 +111,7 @@
           </div>
         </div>
         
-        <div class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800">
+        <div class="bg-zinc-900/70 p-6 rounded-lg border border-zinc-800">
           <div class="border-l-4 border-zinc-700 pl-4">
             <h3 class="text-lg font-semibold text-zinc-200">Assistente de Tecnologia da Informação</h3>
             <p class="text-zinc-400">Senac de Marília</p>

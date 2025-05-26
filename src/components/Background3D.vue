@@ -9,13 +9,14 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import { Application } from '@splinetool/runtime'
 
 const app = ref(null)
+const isLoaded = ref(false)
 
 onMounted(() => {
   const canvas = document.getElementById('background3d')
   
   // Ajusta o tamanho do canvas para a resolução da tela
   const updateCanvasSize = () => {
-    const scale = window.devicePixelRatio || 1
+    const scale = Math.min(window.devicePixelRatio || 1, 2) // Limita a escala para melhor performance
     const width = window.innerWidth
     const height = window.innerHeight
     
@@ -28,26 +29,38 @@ onMounted(() => {
   // Inicializa o canvas com o tamanho correto
   updateCanvasSize()
 
-  // Atualiza o tamanho quando a janela é redimensionada
-  window.addEventListener('resize', updateCanvasSize)
+  // Debounce para o evento de resize
+  let resizeTimeout
+  const debouncedResize = () => {
+    clearTimeout(resizeTimeout)
+    resizeTimeout = setTimeout(updateCanvasSize, 250)
+  }
+  window.addEventListener('resize', debouncedResize)
 
-  // Inicializa a aplicação Spline
-  app.value = new Application(canvas)
-  app.value.load('https://prod.spline.design/dnUzpjAuLSccaqd0/scene.splinecode')
+  // Carrega o background apenas quando a página estiver pronta
+  const loadBackground = () => {
+    if (isLoaded.value) return
+    
+    app.value = new Application(canvas)
+    app.value.load('https://prod.spline.design/dnUzpjAuLSccaqd0/scene.splinecode', {
+      quality: window.innerWidth <= 768 ? 'low' : 'medium'
+    })
+    .then(() => {
+      isLoaded.value = true
+    })
     .catch(error => {
       console.error('Erro ao carregar o background:', error)
     })
-
-  // Reduz a qualidade em dispositivos móveis para melhor performance
-  if (window.innerWidth <= 768) {
-    canvas.style.transform = 'scale(0.75)'
   }
+
+  // Carrega o background após um pequeno delay para priorizar o conteúdo principal
+  setTimeout(loadBackground, 1000)
 })
 
 onUnmounted(() => {
   if (app.value) {
     app.value.dispose()
-    window.removeEventListener('resize', updateCanvasSize)
+    window.removeEventListener('resize', debouncedResize)
   }
 })
 </script>
@@ -62,6 +75,8 @@ onUnmounted(() => {
   z-index: -1;
   background: transparent;
   overflow: hidden;
+  will-change: transform, opacity; /* Otimização de performance */
+  opacity: 0; /* Começa invisível para a animação */
 }
 
 canvas {
@@ -71,6 +86,7 @@ canvas {
   background: transparent;
   transform-origin: center center;
   transition: transform 0.3s ease;
+  will-change: transform, opacity; /* Otimização de performance */
 }
 
 /* Otimizações para dispositivos móveis */

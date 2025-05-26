@@ -1,11 +1,11 @@
 <template>
-  <footer class="bg-zinc-900/80 border-t border-zinc-800 py-6">
+  <footer class="bg-zinc-900/80 border-t border-zinc-800 py-2 w-full z-40">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-2">
         
         <!-- Logo e Descrição -->
         <div class="text-center md:text-left">
-          <div class="text-zinc-100 font-bold text-lg mb-2">
+          <div class="text-zinc-100 font-bold text-lg mb-1">
             <span class="text-zinc-400">&lt;</span>LH<span class="text-zinc-400">/&gt;</span>
           </div>
           <p class="text-zinc-400 text-sm max-w-xs">
@@ -13,30 +13,14 @@
           </p>
         </div>
 
-        <!-- Links Rápidos -->
-        <div class="flex flex-col items-center md:items-start">
-          <h3 class="text-zinc-100 font-semibold text-sm mb-2">Links Rápidos</h3>
-          <nav class="flex flex-wrap justify-center gap-3">
-            <router-link
-              v-for="item in navItems"
-              :key="item.path"
-              :to="item.path"
-              class="text-zinc-400 hover:text-zinc-100 text-sm transition-colors"
-            >
-              {{ item.name }}
-            </router-link>
-          </nav>
-        </div>
-
         <!-- Redes Sociais -->
         <div class="flex flex-col items-center md:items-start">
-          <h3 class="text-zinc-100 font-semibold text-sm mb-2">Redes Sociais</h3>
           <div class="flex gap-3">
             <a
-              href="https://github.com/seu-usuario"
+              href="https://github.com/lorocks51987"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-link text-zinc-400 hover:text-zinc-100 transition-colors"
+              class="icons-social-media"
               aria-label="GitHub"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -44,10 +28,10 @@
               </svg>
             </a>
             <a
-              href="https://linkedin.com/in/seu-perfil"
+              href="https://linkedin.com/in/luiz-henrique-costa-64b068221"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-link text-zinc-400 hover:text-zinc-100 transition-colors"
+              class="icons-social-media"
               aria-label="LinkedIn"
             >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -59,7 +43,7 @@
       </div>
 
       <!-- Copyright -->
-      <div class="mt-6 pt-6 border-t border-zinc-800 text-center">
+      <div class="mt-2 pt-2 border-t border-zinc-800 text-center">
         <p class="text-zinc-500 text-xs">
           © {{ new Date().getFullYear() }} Luiz Henrique. Todos os direitos reservados.
         </p>
@@ -69,37 +53,49 @@
 </template>
 
 <script setup>
-const navItems = [
-  { name: 'Home', path: '/' },
-  { name: 'Sobre', path: '/sobre' },
-  { name: 'Projetos', path: '/projetos' },
-  { name: 'Contato', path: '/contato' }
-]
+// Removendo a constante navItems que não é mais necessária
 </script>
 
 <style scoped>
-.social-link {
+.icons-social-media {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  border-radius: 0.375rem;
+  padding: 8px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer !important;
+  transition: 300ms all ease-in-out;
+  position: relative;
+  color: #d4d4d8;
   background-color: rgba(63, 63, 70, 0.1);
-  transition: all 0.2s ease;
+  border-radius: 50%;
+  clip-path: circle(65%);
 }
 
-.social-link:hover {
-  background-color: rgba(63, 63, 70, 0.2);
-  transform: translateY(-2px);
+.icons-social-media:hover {
+  translate: 0 -10px;
+  color: #ffffff;
+}
+
+.icons-social-media:hover svg {
+  transform: scale(1.1);
+}
+
+/* Cores específicas para cada rede social */
+.icons-social-media:nth-child(1):hover {
+  background-color: #333333; /* GitHub */
+}
+
+.icons-social-media:nth-child(2):hover {
+  background-color: #0077b5; /* LinkedIn */
 }
 
 @media (max-width: 768px) {
-  .social-link {
-    padding: 0.4rem;
-  }
-  
-  .gap-6 {
-    gap: 2rem;
+  .icons-social-media {
+    padding: 6px;
+    width: 32px;
+    height: 32px;
   }
 }
 

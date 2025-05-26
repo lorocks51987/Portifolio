@@ -26,18 +26,18 @@ onMounted(() => {
       </div>
     </div>
 
-    <Background3D />
+    <Background3D class="animate-fade-in" />
     <div class="content-wrapper">
-      <Navbar />
-      <SplineRobot />
+      <Navbar class="animate-fade-in-down" />
+      <SplineRobot class="animate-fade-in animate-delay-1" />
 
-      <div class="main container mx-auto px-4 py-6 flex-grow">
+      <div class="main container mx-auto px-4 py-6 flex-grow animate-fade-in-up animate-delay-2">
         <router-view v-slot="{ Component }">
           <component :is="Component" />
         </router-view>
       </div>
 
-      <Footer />
+      <Footer class="animate-fade-in-up animate-delay-3" />
     </div>
   </div>
 </template>
@@ -63,7 +63,7 @@ onMounted(() => {
 .content-wrapper {
   position: relative;
   z-index: 1;
-  padding: 1rem;
+  padding: 0;
 }
 
 body {
@@ -131,7 +131,18 @@ p, span, a, li {
   /* Cor hover - zinc-600 */
 }
 
-/* Animações */
+/* Animações de entrada */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -152,9 +163,16 @@ p, span, a, li {
   }
 }
 
-.animate-on-scroll {
-  opacity: 0;
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
 .animate-delay-1 {
@@ -219,16 +237,20 @@ div[vw] .vw-plugin-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
+  padding-top: 5rem; /* Espaço para a navbar */
+  min-height: calc(100vh - 5rem); /* Altura mínima considerando apenas a navbar */
+  width: 100%;
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
   .content-wrapper {
-    padding: 0.5rem;
+    padding: 0;
   }
 
   .main {
     padding: 0.5rem;
+    padding-top: 5rem;
   }
 
   h1 {
