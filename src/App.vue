@@ -1,17 +1,19 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, defineAsyncComponent } from 'vue'
 import Navbar from './components/NavbarComponent.vue'
 import Footer from './components/FooterComponent.vue'
-import SplineRobot from './components/SplineRobot.vue'
-import Background3D from './components/Background3D.vue'
 
-// VLibras Script
+// Lazy loading dos componentes pesados
+const SplineRobot = defineAsyncComponent(() => import('./components/SplineRobot.vue'))
+const Background3D = defineAsyncComponent(() => import('./components/Background3D.vue'))
+
+// VLibras Script - Carregamento assíncrono
 onMounted(() => {
   const script = document.createElement('script')
   script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
-  script.onload = () => {
-    new window.VLibras.Widget()
-  }
+  script.async = true
+  script.defer = true
+  script.onload = () => new window.VLibras.Widget()
   document.head.appendChild(script)
 })
 </script>

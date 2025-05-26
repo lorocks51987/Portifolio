@@ -1,28 +1,37 @@
 <template>
-  <div class="min-h-full py-12">
-    <!-- Hero Section -->
-    <div class="max-w-5xl mx-auto px-4">
-      <div class="text-center mb-20">
-        <!-- Efeito de Digitação -->
+  <div class="min-h-screen py-12 flex items-center justify-center">
+    <div class="max-w-6xl mx-auto px-4 w-full">
+      <!-- Hero Section -->
+      <section class="mb-24">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20">
+          <!-- Texto e Botões -->
+          <div class="flex-1 text-center md:text-left">
+            <!-- Efeito de Digitação -->
+            <div class="mb-6">
+              <TypingSVG class="mb-4" text="Olá, eu sou Luiz Henrique Costa" color="ffffff" :size="45" />
+            </div>
 
-        <!-- Foto de perfil -->
-        <div class="mb-8">
-          <img :src="profileImage" alt="Luiz Henrique"
-            class="w-48 h-48 rounded-full mx-auto border-4 border-zinc-800 shadow-zinc-900/20 shadow-lg object-cover" />
+            <p class="text-xl text-zinc-300 mt-8 mb-8 leading-relaxed text-content font-light">
+              Estagiário em desenvolvimento de software, apaixonado por tecnologia, programação e fotografia.
+              Estou sempre buscando aprender coisas novas e crescer na área.
+            </p>
+
+          </div>
+
+          <!-- Foto de perfil -->
+          <div class="flex-shrink-0 mb-8 md:mb-0 md:ml-auto">
+            <div class="profile-image-container relative w-64 h-64">
+               <!-- Efeito de gradiente animado ao redor da foto -->
+              
+              <img :src="profileImage" alt="Luiz Henrique"
+                class="profile-image w-64 h-64 rounded-full object-cover border-4 border-zinc-800 shadow-2xl relative z-10" />
+            </div>
+          </div>
         </div>
-
-        <div class="mb-8">
-          <TypingSVG class="mb-8" text="Olá, eu sou Luiz Henrique" color="ffffff" :size="45" />
-        </div>
-
-        <p class="text-xl text-zinc-300 mb-8 max-w-2xl mx-auto leading-relaxed text-content font-light">
-          Estagiário em desenvolvimento de software, apaixonado por tecnologia, programação e fotografia.
-          Estou sempre buscando aprender coisas novas e crescer na área.
-        </p>
-      </div>
+      </section>
 
       <!-- Featured Skills/Experience -->
-      <div class="grid md:grid-cols-2 gap-8 mt-16">
+      <section class="grid md:grid-cols-2 gap-8 mt-24">
         <div class="bg-gradient-to-br from-zinc-900/90 to-zinc-800/90 p-8 rounded-xl border border-zinc-700/50 shadow-xl backdrop-blur-sm hover:border-zinc-600/50 transition-all duration-300">
           <h2 class="text-2xl font-semibold text-zinc-100 mb-6 text-center mb-12 bg-gradient-to-r from-zinc-100 to-zinc-300 bg-clip-text text-transparent">Principais Habilidades</h2>
           <div class="flex flex-wrap gap-6 justify-center">
@@ -96,7 +105,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>
@@ -104,11 +113,27 @@
 <script setup>
 import profileImage from '../assets/perfil.png'
 import TypingSVG from '../components/TypingSVG.vue'
+import { onMounted } from 'vue'
+import VanillaTilt from 'vanilla-tilt'
+
+onMounted(() => {
+  // Seleciona o contêiner da foto onde o Vanilla Tilt será aplicado
+  const element = document.querySelector('.profile-image-container')
+  if (element) {
+    VanillaTilt.init(element, {
+      max: 15, // Ângulo máximo de inclinação
+      speed: 400, // Velocidade da transição
+      glare: true, // Habilita o efeito de brilho
+      'max-glare': 0.3, // Intensidade máxima do brilho
+      // scale: 1.05 // Removido ou ajustado se aplicado ao container
+    })
+  }
+})
 </script>
 
 <style scoped>
-.min-h-full {
-  min-height: 100%;
+.min-h-screen {
+  min-height: 100vh;
 }
 
 /* Estilização da barra de rolagem */
@@ -134,4 +159,37 @@ import TypingSVG from '../components/TypingSVG.vue'
   background: #52525b;
   /* Cor hover - zinc-600 */
 }
+
+.profile-image-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  /* Adicionei margem inferior aqui, se necessário, ou use classes tailwind no template */
+}
+
+.profile-image {
+  transform-style: preserve-3d; /* Permite que a imagem interna reaja ao tilt do contêiner */
+  transition: all 0.3s ease;
+}
+
+.profile-image:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes gradient-xy {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-xy {
+  animation: gradient-xy 15s ease infinite;
+  background-size: 400% 400%;
+}
 </style>
+

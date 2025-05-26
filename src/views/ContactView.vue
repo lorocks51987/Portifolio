@@ -14,7 +14,7 @@
         <div class="bg-zinc-900/80 p-6 rounded-lg border border-zinc-800">
           <h2 class="text-2xl font-semibold text-zinc-100 mb-6">Envie uma mensagem</h2>
           <p class="text-zinc-400 mb-6 text-sm">O formulário abaixo é apenas ilustrativo e não envia mensagens.</p>
-          <form class="space-y-4">
+          <form class="space-y-4" @submit="handleSubmit">
             <div>
               <label for="name" class="block text-sm font-medium text-zinc-300 mb-1">
                 Nome

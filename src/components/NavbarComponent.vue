@@ -99,11 +99,7 @@ const links = [
 
 const toggleMenu = () => {
   isOpen.value = !isOpen.value
-  if (isOpen.value) {
-    document.body.style.overflow = 'hidden'
-  } else {
-    document.body.style.overflow = ''
-  }
+  document.body.style.overflow = isOpen.value ? 'hidden' : ''
 }
 
 const closeMenu = () => {
