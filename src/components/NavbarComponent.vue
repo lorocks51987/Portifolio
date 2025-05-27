@@ -12,46 +12,26 @@
         <!-- Links de Navegação -->
         <div class="hidden md:block">
           <div class="ml-10 flex items-baseline space-x-4">
-            <router-link
-              v-for="(link, index) in links"
-              :key="index"
-              :to="link.to"
+            <router-link v-for="(link, index) in links" :key="index" :to="link.to"
               class="nav-link relative text-zinc-300 hover:text-zinc-100 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              active-class="text-zinc-100 bg-zinc-800"
-            >
+              active-class="text-zinc-100 bg-zinc-800">
               {{ link.text }}
             </router-link>
+
+            <ClimateComponent />
+
           </div>
         </div>
 
         <!-- Menu Mobile -->
         <div class="md:hidden">
-          <button
-            @click="toggleMenu"
+          <button @click="toggleMenu"
             class="text-zinc-300 hover:text-zinc-100 focus:outline-none transition-colors p-2 rounded-md"
-            :aria-expanded="isOpen"
-            aria-label="Menu principal"
-          >
-            <svg
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                v-if="!isOpen"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-              <path
-                v-else
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
+            :aria-expanded="isOpen" aria-label="Menu principal">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path v-if="!isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16" />
+              <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
@@ -59,24 +39,15 @@
     </div>
 
     <!-- Menu Mobile Expandido -->
-    <transition
-      enter-active-class="transition duration-200 ease-out"
-      enter-from-class="transform -translate-y-4 opacity-0"
-      enter-to-class="transform translate-y-0 opacity-100"
-      leave-active-class="transition duration-150 ease-in"
-      leave-from-class="transform translate-y-0 opacity-100"
-      leave-to-class="transform -translate-y-4 opacity-0"
-    >
+    <transition enter-active-class="transition duration-200 ease-out"
+      enter-from-class="transform -translate-y-4 opacity-0" enter-to-class="transform translate-y-0 opacity-100"
+      leave-active-class="transition duration-150 ease-in" leave-from-class="transform translate-y-0 opacity-100"
+      leave-to-class="transform -translate-y-4 opacity-0">
       <div v-show="isOpen" class="md:hidden w-full bg-zinc-900/95 backdrop-blur-sm">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <router-link
-            v-for="(link, index) in links"
-            :key="index"
-            :to="link.to"
+          <router-link v-for="(link, index) in links" :key="index" :to="link.to"
             class="text-zinc-300 hover:text-zinc-100 block px-3 py-2 rounded-md text-base font-medium transition-colors"
-            active-class="text-zinc-100 bg-zinc-800"
-            @click="closeMenu"
-          >
+            active-class="text-zinc-100 bg-zinc-800" @click="closeMenu">
             {{ link.text }}
           </router-link>
         </div>
@@ -87,6 +58,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import ClimateComponent from './ClimateComponent.vue'
 
 const isOpen = ref(false)
 
@@ -107,6 +79,7 @@ const closeMenu = () => {
   document.body.style.overflow = ''
 }
 </script>
+
 
 <style scoped>
 .nav-link {
