@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, defineAsyncComponent } from 'vue'
+import { onMounted, defineAsyncComponent, ref } from 'vue'
 import Navbar from './components/NavbarComponent.vue'
 import Footer from './components/FooterComponent.vue'
 
@@ -7,8 +7,23 @@ import Footer from './components/FooterComponent.vue'
 const SplineRobot = defineAsyncComponent(() => import('./components/SplineRobot.vue'))
 const Background3D = defineAsyncComponent(() => import('./components/Background3D.vue'))
 
-// VLibras Script - Carregamento assíncrono
+const showRobot = ref(false)
+const showText = ref(false)
+const showBackground = ref(false)
+
 onMounted(() => {
+  // Sequência de exibição: robô -> texto -> fundo
+  setTimeout(() => {
+    showRobot.value = true
+    setTimeout(() => {
+      showText.value = true
+      setTimeout(() => {
+        showBackground.value = true
+      }, 1000) // tempo para o fundo aparecer após o texto
+    }, 1000) // tempo para o texto aparecer após o robô
+  }, 500) // tempo inicial para o robô aparecer
+
+  // VLibras Script - Carregamento assíncrono
   const script = document.createElement('script')
   script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
   script.async = true
@@ -28,18 +43,18 @@ onMounted(() => {
       </div>
     </div>
 
-    <Background3D class="animate-fade-in" />
+    <Background3D v-if="showBackground" class="animate-fade-in" />
     <div class="content-wrapper">
-      <Navbar class="animate-fade-in-down" />
-      <SplineRobot class="animate-fade-in animate-delay-1" />
+      <Navbar v-if="showText" />
+      <SplineRobot v-if="showRobot" class="animate-fade-in animate-delay-1" />
 
-      <div class="main container mx-auto px-4 py-6 flex-grow animate-fade-in-up animate-delay-2">
+      <div v-if="showText" class="main container mx-auto px-4 py-6 flex-grow animate-fade-in-up animate-delay-2">
         <router-view v-slot="{ Component }">
           <component :is="Component" />
         </router-view>
       </div>
 
-      <Footer class="animate-fade-in-up animate-delay-3" />
+      <Footer v-if="showText" />
     </div>
   </div>
 </template>
@@ -75,12 +90,20 @@ body {
 }
 
 /* Melhorias de legibilidade para textos */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   color: #ffffff !important;
 }
 
-p, span, a, li {
+p,
+span,
+a,
+li {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
 }
 
@@ -139,6 +162,7 @@ p, span, a, li {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -150,6 +174,7 @@ p, span, a, li {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -160,6 +185,7 @@ p, span, a, li {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -239,8 +265,10 @@ div[vw] .vw-plugin-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
-  padding-top: 5rem; /* Espaço para a navbar */
-  min-height: calc(100vh - 5rem); /* Altura mínima considerando apenas a navbar */
+  padding-top: 5rem;
+  /* Espaço para a navbar */
+  min-height: calc(100vh - 5rem);
+  /* Altura mínima considerando apenas a navbar */
   width: 100%;
 }
 
