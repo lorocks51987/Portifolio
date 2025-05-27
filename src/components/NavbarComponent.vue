@@ -5,7 +5,7 @@
         <!-- Logo ou Nome -->
         <div class="flex-shrink-0">
           <router-link to="/" class="text-xl font-bold text-white">
-            LH
+            <span class="text-zinc-400">&lt;</span>LH<span class="text-zinc-400">/&gt;</span>
           </router-link>
         </div>
 

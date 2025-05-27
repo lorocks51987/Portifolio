@@ -14,6 +14,13 @@
             <p class="text-xl text-zinc-300 mt-8 mb-8 leading-relaxed text-content font-light">
               {{ $t('home.description') }}
             </p>
+
+            <div class="flex gap-4 justify-center md:justify-start">
+              <DownloadPdfButton
+                :pdf-url="pdfUrl"
+                :pdf-file-name="pdfFileName"
+              />
+            </div>
           </div>
 
           <!-- Foto de perfil -->
@@ -123,7 +130,10 @@ import profileImage from '../assets/perfil.png'
 import TypingSVG from '../components/TypingSVG.vue'
 import { onMounted } from 'vue'
 import VanillaTilt from 'vanilla-tilt'
+import DownloadPdfButton from '../components/DownloadPdfButton.vue'
 
+const pdfUrl = '/Portifolio/cv-luiz.pdf'  // caminho correto do PDF no seu servidor
+const pdfFileName = 'cv-luiz.pdf'
 onMounted(() => {
   // Seleciona o contêiner da foto onde o Vanilla Tilt será aplicado
   const element = document.querySelector('.profile-image-container')
