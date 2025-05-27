@@ -34,7 +34,7 @@
       
       app.value = new Application(canvas)
       const basePath = import.meta.env.BASE_URL || '/'
-      app.value.load(`${basePath}scene.splinecode`, { quality: 'medium' })
+      app.value.load(`${basePath}scene.splinecode`)
         .then(() => { isLoaded.value = true })
         .catch(error => console.error('Erro ao carregar o modelo 3D:', error))
     }

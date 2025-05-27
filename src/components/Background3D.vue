@@ -59,17 +59,7 @@ const loadBackground = async () => {
 
   try {
     app.value = new Application(canvas)
-    await app.value.load('https://prod.spline.design/dnUzpjAuLSccaqd0/scene.splinecode', {
-      quality: getQuality(),
-      progressive: true,
-      progressiveSteps: 5,
-      progressiveDelay: 200,
-      lowQualityFirst: true,
-      autoResize: false,
-      preserveDrawingBuffer: false,
-      antialias: false,
-      powerPreference: 'low-power'
-    })
+    await app.value.load('https://prod.spline.design/dnUzpjAuLSccaqd0/scene.splinecode')
     isLoaded.value = true
   } catch (error) {
     console.error('Erro ao carregar o background:', error)

@@ -20,6 +20,7 @@
 
             <ClimateComponent />
 
+
           </div>
         </div>
 
