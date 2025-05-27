@@ -12,49 +12,35 @@ const showText = ref(false)
 const showBackground = ref(false)
 
 onMounted(() => {
-  // Sequência de exibição: robô -> texto -> fundo
+  // Sequência de exibição: fundo -> (pausa) -> texto -> robô
   setTimeout(() => {
-    showRobot.value = true
+    showBackground.value = true
+    // Aguarda 1 segundo para o fundo iniciar sua animação
     setTimeout(() => {
       showText.value = true
       setTimeout(() => {
-        showBackground.value = true
-      }, 1000) // tempo para o fundo aparecer após o texto
-    }, 1000) // tempo para o texto aparecer após o robô
-  }, 500) // tempo inicial para o robô aparecer
-
-  // VLibras Script - Carregamento assíncrono
-  const script = document.createElement('script')
-  script.src = 'https://vlibras.gov.br/app/vlibras-plugin.js'
-  script.async = true
-  script.defer = true
-  script.onload = () => new window.VLibras.Widget()
-  document.head.appendChild(script)
+        showRobot.value = true
+      }, 2500) // tempo para o robô aparecer após o texto
+    }, 3000) // tempo para o texto aparecer após o fundo
+  }, 500) // tempo inicial para o fundo aparecer
 })
 </script>
 
 <template>
   <div class="app-container">
-    <!-- VLibras Widget -->
-    <div vw class="enabled">
-      <div vw-access-button class="active"></div>
-      <div vw-plugin-wrapper>
-        <div class="vw-plugin-top-wrapper"></div>
-      </div>
-    </div>
-
-    <Background3D v-if="showBackground" class="animate-fade-in" />
+    <Background3D v-if="showBackground" class="initial-hidden animate-fade-in" />
     <div class="content-wrapper">
-      <Navbar v-if="showText" />
-      <SplineRobot v-if="showRobot" class="animate-fade-in animate-delay-1" />
+      <Navbar v-if="showText" class="initial-hidden animate-fade-in-up animate-delay-1" />
+      <SplineRobot v-if="showRobot" class="initial-hidden animate-fade-in-right animate-delay-2" />
 
-      <div v-if="showText" class="main container mx-auto px-4 py-6 flex-grow animate-fade-in-up animate-delay-2">
+      <div v-if="showText"
+        class="main container mx-auto px-4 py-6 flex-grow initial-hidden animate-fade-in-up animate-delay-2">
         <router-view v-slot="{ Component }">
           <component :is="Component" />
         </router-view>
       </div>
 
-      <Footer v-if="showText" />
+      <Footer v-if="showText" class="initial-hidden animate-fade-in-up animate-delay-3" />
     </div>
   </div>
 </template>
@@ -157,10 +143,22 @@ li {
 }
 
 /* Animações de entrada */
-@keyframes fadeInDown {
+@keyframes fadeInScale {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
 
   to {
@@ -169,50 +167,48 @@ li {
   }
 }
 
-@keyframes fadeInUp {
+@keyframes slideInFromRight {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(30px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fade-in-down {
-  animation: fadeInDown 0.6s ease-out forwards;
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+.initial-hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+  animation: fadeInScale 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  visibility: visible;
+}
+
+.animate-fade-in-up {
+  animation: slideInFromBottom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  visibility: visible;
+}
+
+.animate-fade-in-right {
+  animation: slideInFromRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  visibility: visible;
 }
 
 .animate-delay-1 {
-  animation-delay: 0.2s;
+  animation-delay: 0.3s;
 }
 
 .animate-delay-2 {
-  animation-delay: 0.4s;
+  animation-delay: 0.6s;
 }
 
 .animate-delay-3 {
-  animation-delay: 0.6s;
+  animation-delay: 0.9s;
 }
 
 /* Transições de página */
@@ -323,6 +319,18 @@ div[vw] .vw-plugin-wrapper {
   div[vw].enabled {
     transform: scale(0.8);
     transform-origin: bottom right;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

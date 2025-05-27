@@ -13,23 +13,31 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/sobre',
+      path: '/about',
       name: 'about',
       component: AboutView
     },
     {
-      path: '/projetos',
+      path: '/sobre',
+      redirect: '/about'
+    },
+    {
+      path: '/projects',
       name: 'projects',
       component: ProjectsView
     },
     {
-      path: '/projects',
-      redirect: '/projetos'
+      path: '/projetos',
+      redirect: '/projects'
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactView
     },
     {
       path: '/contato',
-      name: 'contact',
-      component: ContactView
+      redirect: '/contact'
     }
   ],
   scrollBehavior(to, from, savedPosition) {

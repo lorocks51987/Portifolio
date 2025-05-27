@@ -4,7 +4,7 @@
       <!-- Projetos -->
       <div class="mt-16">
         <div class="mb-8">
-          <TypingSVG class="mb-8" text="Projetos em Destaque" color="ffffff" :size="45" />
+          <TypingSVG class="mb-8" :text="$t('projects.title')" color="ffffff" :size="45" />
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Projeto 1 -->
@@ -12,11 +12,10 @@
             class="block bg-zinc-900/70 rounded-lg border border-zinc-800 overflow-hidden hover:border-zinc-700 transition-all duration-300 group">
             <div class="p-6">
               <img src="../assets/imgs/RM.png" alt="Rick and Morty" class="w-full h-40 object-cover rounded-lg mb-4">
-              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">Rick and Morty -
-                Visualizador de Personagens</h3>
+              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">{{
+                $t('projects.projects.rickMorty.title') }}</h3>
               <p class="text-zinc-400 text-sm mb-4">
-                Projeto que consome a Rick and Morty API para exibir e filtrar personagens.<br>Inclui visualização
-                detalhada de cada personagem.
+                {{ $t('projects.projects.rickMorty.description') }}
               </p>
               <div class="flex gap-2">
                 <span class="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400">Html</span>
@@ -32,9 +31,10 @@
             class="block bg-zinc-900/70 rounded-lg border border-zinc-800 overflow-hidden hover:border-zinc-700 transition-all duration-300 group">
             <div class="p-6">
               <img src="../assets/imgs/clima.png" alt="Clima" class="w-full h-40 object-cover rounded-lg mb-4">
-              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">Clima Tact</h3>
+              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">{{
+                $t('projects.projects.climaTact.title') }}</h3>
               <p class="text-zinc-400 text-sm mb-4">
-                Projeto de um site de clima, com informações do clima de uma cidade que o usuario escolher.
+                {{ $t('projects.projects.climaTact.description') }}
               </p>
               <div class="flex gap-2">
                 <span class="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400">HTML</span>
@@ -46,15 +46,14 @@
           </a>
 
           <!-- Projeto 3 -->
-
           <a href="https://unimapbootcamp.netlify.app/" target="_blank"
             class="block bg-zinc-900/70 rounded-lg border border-zinc-800 overflow-hidden hover:border-zinc-700 transition-all duration-300 group">
             <div class="p-6">
               <img src="../assets/imgs/map.png" alt="Unimap" class="w-full h-40 object-cover rounded-lg mb-4">
-              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">Unimap Bootcamp</h3>
+              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">{{
+                $t('projects.projects.unimap.title') }}</h3>
               <p class="text-zinc-400 text-sm mb-4">
-                Projeto desenvolvidos durante o bootcamp da Unimar em 2023 <br> conquistei o segundo lugar na competição
-                do Bootcamp.
+                {{ $t('projects.projects.unimap.description') }}
               </p>
               <div class="flex gap-2">
                 <span class="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400">HTML</span>
@@ -65,16 +64,15 @@
             </div>
           </a>
 
-
           <!-- Projeto 4 -->
-
           <a href="https://lorocks51987.github.io/Contador/" target="_blank"
             class="block bg-zinc-900/70 rounded-lg border border-zinc-800 overflow-hidden hover:border-zinc-700 transition-all duration-300 group">
             <div class="p-6">
               <img src="../assets/imgs/count.png" alt="Contador" class="w-full h-40 object-cover rounded-lg mb-4">
-              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">Contadorjs</h3>
+              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">{{
+                $t('projects.projects.contador.title') }}</h3>
               <p class="text-zinc-400 text-sm mb-4">
-                projeto web simples e modificável que exibe um contador de tempo.
+                {{ $t('projects.projects.contador.description') }}
               </p>
               <div class="flex gap-2">
                 <span class="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400">HTML</span>
@@ -90,10 +88,10 @@
             <div class="p-6">
               <img src="../assets/imgs/FP.png" alt="Apresentação do Projeto"
                 class="w-full h-40 object-cover rounded-lg mb-4">
-              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">Apresentação do Projeto
-                <br>Com Tailwind CSS</h3>
+              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">{{
+                $t('projects.projects.tailwind.title') }}</h3>
               <p class="text-zinc-400 text-sm mb-4">
-                Site em grupo desenvolvido com Tailwind CSS, apresentando o projeto da materia Fabrica de Projetos.
+                {{ $t('projects.projects.tailwind.description') }}
               </p>
               <div class="flex gap-2">
                 <span class="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400">Html</span>
@@ -103,16 +101,15 @@
             </div>
           </a>
 
-
           <!-- Projeto 6 -->
-
           <a href="https://lorocks51987.github.io/CalculadoraJS/" target="_blank"
             class="block bg-zinc-900/70 rounded-lg border border-zinc-800 overflow-hidden hover:border-zinc-700 transition-all duration-300 group">
             <div class="p-6">
               <img src="../assets/imgs/calc.png" alt="Calculadora" class="w-full h-40 object-cover rounded-lg mb-4">
-              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">Calculadora SimplesJS</h3>
+              <h3 class="text-lg font-semibold text-zinc-100 mb-2 group-hover:text-zinc-300">{{
+                $t('projects.projects.calculadora.title') }}</h3>
               <p class="text-zinc-400 text-sm mb-4">
-                Uma calculadora web que realiza as quatro operações básicas: soma, subtração, multiplicação e divisão.
+                {{ $t('projects.projects.calculadora.description') }}
               </p>
               <div class="flex gap-2">
                 <span class="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400">HTML</span>
@@ -121,7 +118,6 @@
               </div>
             </div>
           </a>
-
         </div>
       </div>
     </div>
@@ -130,4 +126,7 @@
 
 <script setup>
 import TypingSVG from '../components/TypingSVG.vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
