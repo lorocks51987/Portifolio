@@ -8,6 +8,10 @@
   <link rel="shortcut icon" href="./src/assets/favicon.svg" type="image/x-icon">
   <title>Luiz Henrique | Portfólio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
 
   <script>
     tailwind.config = {
@@ -44,6 +48,12 @@
 
 <body>
   <div id="app"></div>
+  <div vw="true" class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
   <script type="module" src="./src/main.js"></script>
 </body>
 
