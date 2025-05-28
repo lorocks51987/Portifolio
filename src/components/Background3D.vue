@@ -29,10 +29,10 @@ const updateCanvasSize = () => {
   const canvas = document.getElementById('background3d')
   if (!canvas) return
 
-  const scale = Math.min(window.devicePixelRatio || 1, 1)
+  const scale = Math.min(window.devicePixelRatio || 1, isMobile() ? 1 : 1)
   const width = window.innerWidth
   const height = window.innerHeight
-  
+
   canvas.width = width * scale
   canvas.height = height * scale
   canvas.style.width = width + 'px'
@@ -41,7 +41,7 @@ const updateCanvasSize = () => {
 
 const debouncedResize = () => {
   clearTimeout(resizeTimeout)
-  resizeTimeout = setTimeout(updateCanvasSize, 500)
+  resizeTimeout = setTimeout(updateCanvasSize, 250)
 }
 
 const checkVisibility = () => {
@@ -52,17 +52,24 @@ const checkVisibility = () => {
 }
 
 const loadBackground = async () => {
-  if (isLoaded.value || !isVisible.value) return
-  
+  if (isLoaded.value) return
+
   const canvas = document.getElementById('background3d')
   if (!canvas) return
 
   try {
-    app.value = new Application(canvas)
+    app.value = new Application(canvas, {
+      events: {
+        onLoad: () => {
+          isLoaded.value = true
+        }
+      }
+    })
     await app.value.load('https://prod.spline.design/dnUzpjAuLSccaqd0/scene.splinecode')
-    isLoaded.value = true
   } catch (error) {
     console.error('Erro ao carregar o background:', error)
+    // Fallback para gradiente em caso de erro
+    isLoaded.value = true
   }
 }
 
@@ -84,28 +91,24 @@ const observeVisibility = () => {
 }
 
 onBeforeMount(() => {
-  if (isMobile()) {
-    isLoaded.value = true
-  }
+  // Removido o early return para mobile
 })
 
 onMounted(() => {
-  if (isMobile()) return
-
   updateCanvasSize()
   window.addEventListener('resize', debouncedResize)
   observer = observeVisibility()
-  
+
   if (document.readyState === 'complete') {
     checkVisibility()
     if (isVisible.value) {
-      loadTimeout = setTimeout(loadBackground, 2000)
+      loadTimeout = setTimeout(loadBackground, 1000)
     }
   } else {
     window.addEventListener('load', () => {
       checkVisibility()
       if (isVisible.value) {
-        loadTimeout = setTimeout(loadBackground, 2000)
+        loadTimeout = setTimeout(loadBackground, 1000)
       }
     })
   }
@@ -132,7 +135,7 @@ onUnmounted(() => {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  background: transparent;
+  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
   overflow: hidden;
   will-change: transform, opacity;
   opacity: 0;
@@ -177,14 +180,42 @@ canvas {
 }
 
 @media (max-width: 768px) {
-  canvas { transform: scale(0.75); }
+  canvas {
+    transform: scale(1.2);
+  }
+
+  .background-container {
+    background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  }
+}
+
+@media (max-width: 480px) {
+  canvas {
+    transform: scale(1.4);
+  }
 }
 
 @media (max-height: 500px) {
-  canvas { transform: scale(0.6); }
+  canvas {
+    transform: scale(1.1);
+  }
 }
 
 @supports (-webkit-touch-callout: none) {
-  .background-container { height: -webkit-fill-available; }
+  .background-container {
+    height: -webkit-fill-available;
+    position: absolute;
+  }
 }
-</style> 
+
+/* Fallback para dispositivos que não suportam canvas 3D */
+@supports not (transform: translateZ(0)) {
+  .background-container {
+    background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  }
+
+  canvas {
+    display: none;
+  }
+}
+</style>

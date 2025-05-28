@@ -68,11 +68,14 @@ onMounted(() => {
 .robot-container {
   position: fixed;
   top: 20px;
-  left: 20px;
+  right: 20px;
   width: 300px;
   height: 300px;
   z-index: 1000;
   will-change: transform;
+  pointer-events: none;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 canvas {
@@ -80,32 +83,45 @@ canvas {
   height: 100%;
   display: block;
   will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  image-rendering: pixelated;
 }
 
 @media (max-width: 768px) {
   .robot-container {
-    width: 200px;
-    height: 200px;
-    top: 15px;
-    left: 15px;
+    width: 180px;
+    height: 180px;
+    top: 10px;
+    right: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .robot-container {
-    width: 150px;
-    height: 150px;
-    top: 10px;
-    left: 10px;
+    width: 140px;
+    height: 140px;
+    top: 5px;
+    right: 5px;
   }
 }
 
 @media (max-height: 500px) {
   .robot-container {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     top: 5px;
-    left: 5px;
+    right: 5px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .robot-container {
+    position: absolute;
   }
 }
 </style>
