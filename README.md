@@ -4,14 +4,18 @@
 Este é meu portfólio pessoal, desenvolvido como parte de um trabalho acadêmico. O objetivo foi colocar em prática os conceitos de Vue 3, Vue Router e Tailwind CSS, criando uma aplicação simples, organizada e funcional.
 
 
-![image](https://github.com/user-attachments/assets/138bd983-0359-4ff0-9064-0dcf86adf723)
+![image](https://github.com/user-attachments/assets/e7e4da44-05d0-46f3-91fe-ae6b7b99f89a)
 
-![image](https://github.com/user-attachments/assets/1d961806-aab3-44c2-9fe2-f4779a9cc87d)
+![image](https://github.com/user-attachments/assets/e6b8d020-4af1-4e56-9449-2498e72df81a)
 
-![image](https://github.com/user-attachments/assets/269e5522-494f-4663-805a-ba73b0d8807d)
+![image](https://github.com/user-attachments/assets/cc4f5a0a-7129-406e-bc83-347bf41aea2a)
 
-![image](https://github.com/user-attachments/assets/f1bbb446-346f-4c33-876a-0d2ee8f95f6c)
+![image](https://github.com/user-attachments/assets/fec643b0-d41b-4473-a1a9-32bc328210d5)
 
+
+Site disponível em português e inglês, com opção de troca de idioma no menu.
+
+![image](https://github.com/user-attachments/assets/f3a4720f-4796-41c1-afb2-4252c9868665)
 
 ## 🚀 Tecnologias Utilizadas
 
