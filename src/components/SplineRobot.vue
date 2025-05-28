@@ -68,7 +68,7 @@ onMounted(() => {
 .robot-container {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 20px;
   width: 300px;
   height: 300px;
   z-index: 1000;
@@ -97,7 +97,7 @@ canvas {
     width: 180px;
     height: 180px;
     top: 10px;
-    right: 10px;
+    left: 10px;
   }
 }
 
@@ -106,7 +106,7 @@ canvas {
     width: 140px;
     height: 140px;
     top: 5px;
-    right: 5px;
+    left: 5px;
   }
 }
 
@@ -115,7 +115,7 @@ canvas {
     width: 100px;
     height: 100px;
     top: 5px;
-    right: 5px;
+    left: 5px;
   }
 }
 
