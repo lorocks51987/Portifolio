@@ -31,6 +31,11 @@ export const messages = {
         frontend: 'Frontend',
         backend: 'Backend & Ferramentas'
       },
+      codecast: {
+        title: 'CodeCast',
+        subtitle: 'Sobre o CodeCast',
+        description: 'O Codecast é um podcast que traz a história por trás dos profissionais da tecnologia. Aqui, você conhece não só a carreira, mas também os sonhos, desafios e curiosidades de quem vive o mundo da programação. Um papo leve, descontraído e cheio de inspiração pra quem ama tecnologia e desenvolvimento!'
+      },
       experience: {
         title: 'Experiência',
         current: 'Atual',
@@ -165,6 +170,11 @@ export const messages = {
         title: 'Technical Skills',
         frontend: 'Frontend',
         backend: 'Backend & Tools'
+      },
+      codecast: {
+        title: 'CodeCast',
+        subtitle: 'About CodeCast',
+        description: 'CodeCast is a podcast that brings the stories behind technology professionals. Here, you get to know not only their careers but also the dreams, challenges, and curiosities of those who live in the programming world. A light, relaxed chat full of inspiration for those who love technology and development!'
       },
       experience: {
         title: 'Experience',

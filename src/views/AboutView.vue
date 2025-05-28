@@ -68,6 +68,27 @@
       </div>
 
       <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-zinc-100 mb-6">{{ $t('about.codecast.title') }}</h2>
+        <div class="grid md:grid-cols-1 gap-6">
+          <div
+            class="bg-gradient-to-br from-zinc-900/90 to-zinc-800/90 p-8 rounded-xl border border-zinc-700/50 shadow-xl backdrop-blur-sm hover:border-zinc-600/50 transition-all duration-300">
+            <div class="aspect-video w-full max-w-4xl mx-auto mb-8">
+              <iframe class="w-full h-full rounded-lg" src="https://www.youtube.com/embed/LhGqoVUlMvI"
+                title="CodeCast #05 | Conheça Evandro Pinheiro Professor da Unimar e Hacker ético" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-semibold text-zinc-200 mb-4">{{ $t('about.codecast.subtitle') }}</h3>
+              <p class="text-lg text-zinc-300 max-w-3xl mx-auto leading-relaxed">
+                {{ $t('about.codecast.description') }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-12">
         <h2 class="text-2xl font-semibold text-zinc-100 mb-6">{{ $t('about.experience.title') }}</h2>
         <div
           class="bg-gradient-to-br from-zinc-900/90 to-zinc-800/90 p-6 rounded-xl border border-zinc-700/50 shadow-xl backdrop-blur-sm hover:border-zinc-600/50 transition-all duration-300 space-y-6">
