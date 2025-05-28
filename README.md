@@ -1,53 +1,40 @@
+# 📁 Portfólio Pessoal
 
-# 📁 Portfólio Pessoal – Projeto Acadêmico
-
-Este é meu portfólio pessoal, desenvolvido como parte de um trabalho acadêmico. O objetivo foi colocar em prática os conceitos de Vue 3, Vue Router e Tailwind CSS, criando uma aplicação simples, organizada e funcional.
-
-
-![image](https://github.com/user-attachments/assets/e7e4da44-05d0-46f3-91fe-ae6b7b99f89a)
-
-![image](https://github.com/user-attachments/assets/e6b8d020-4af1-4e56-9449-2498e72df81a)
-
-![image](https://github.com/user-attachments/assets/cc4f5a0a-7129-406e-bc83-347bf41aea2a)
-
-![image](https://github.com/user-attachments/assets/89fdb4b4-22e2-465a-b90f-255496e4afc7)
-
-
-Site disponível em português e inglês, com opção de troca de idioma no menu.
-
-![image](https://github.com/user-attachments/assets/f3a4720f-4796-41c1-afb2-4252c9868665)
+Este é meu portfólio pessoal, desenvolvido como parte de um trabalho acadêmico. O objetivo foi colocar em prática os conceitos de Vue 3, Vue Router e outras tecnologias modernas, criando uma aplicação interativa e responsiva.
 
 ## 🚀 Tecnologias Utilizadas
 
-- Vue 3 (Composition API)
-- Vite
-- Vue Router
-- Tailwind CSS (via CDN)
+- **Vue 3** (Composition API) - Framework JavaScript progressivo
+- **Vite** - Build tool e servidor de desenvolvimento
+- **Vue Router** - Roteamento oficial do Vue.js
+- **Vue I18n** - Internacionalização para Vue.js
+- **Spline Tool** - Para elementos 3D interativos
+- **Vanilla Tilt** - Para efeitos de tilt em elementos
+- **Tailwind CSS** - Framework CSS utilitário
 
 ## 🎯 Funcionalidades
 
-- **Home:** Apresentação pessoal.
-- **Sobre:** Habilidades, formação e trajetória.
-- **Peojeto:** Outros projetos desenvolvidos por mim.
-- **Contato:** Formulário de contato (não funcional) e redes sociais.
+- **Design Responsivo** - Adaptação para diferentes tamanhos de tela
+- **Internacionalização** - Suporte para português e inglês
+- **Animações 3D** - Elementos interativos usando Spline
+- **Efeitos de Tilt** - Interatividade com elementos da interface
+- **Navegação Suave** - Transições entre páginas
+- **Tema Escuro/Claro** - Suporte a diferentes temas
 
 ## 🏗️ Estrutura do Projeto
 
 ```
 portfolio/
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── Header.vue
-│   │   └── Footer.vue
-│   ├── views/
-│   │   ├── Home.vue
-│   │   ├── Sobre.vue
-│   │   └── Contato.vue
-│   ├── App.vue
-│   └── main.js
-├── public/
-└── package.json
+│   ├── assets/         # Recursos estáticos (imagens, fontes, etc)
+│   ├── components/     # Componentes Vue reutilizáveis
+│   ├── views/         # Páginas da aplicação
+│   ├── locales/       # Arquivos de tradução
+│   ├── App.vue        # Componente raiz
+│   └── main.js        # Ponto de entrada da aplicação
+├── public/            # Arquivos públicos
+├── vite.config.js     # Configuração do Vite
+└── package.json       # Dependências e scripts
 ```
 
 ## 💻 Como Rodar
@@ -67,12 +54,35 @@ cd Portifolio
 npm install
 ```
 
-4. Rode o projeto:
+4. Inicie o servidor de desenvolvimento:
 ```bash
 npm run dev
 ```
 
-Acesse em `http://localhost:5173`.
+5. Para build de produção:
+```bash
+npm run build
+```
+
+6. Para visualizar o build:
+```bash
+npm run preview
+```
+
+Acesse em `http://localhost:5173` durante o desenvolvimento.
+
+## 📦 Dependências Principais
+
+- `@splinetool/runtime`: ^1.9.96
+- `vanilla-tilt`: ^1.8.1
+- `vue`: ^3.4.21
+- `vue-i18n`: ^9.14.4
+- `vue-router`: ^4.5.1
+
+## 🛠️ Dependências de Desenvolvimento
+
+- `@vitejs/plugin-vue`: ^5.2.3
+- `vite`: ^6.3.5
 
 ## 📄 Licença
 
