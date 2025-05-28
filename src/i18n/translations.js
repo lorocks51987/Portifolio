@@ -127,7 +127,7 @@ export const messages = {
         name: 'Nome',
         namePlaceholder: 'Seu nome completo',
         email: 'E-mail',
-        emailPlaceholder: 'seu@email.com',
+        emailPlaceholder: 'Digite seu e-mail',
         message: 'Mensagem',
         messagePlaceholder: 'Sua mensagem aqui...',
         submit: 'Enviar Mensagem'
@@ -262,7 +262,7 @@ export const messages = {
         name: 'Name',
         namePlaceholder: 'Your full name',
         email: 'Email',
-        emailPlaceholder: 'your@email.com',
+        emailPlaceholder: 'Enter your email',
         message: 'Message',
         messagePlaceholder: 'Your message here...',
         submit: 'Send Message'
