@@ -43,6 +43,14 @@ onMounted(() => {
           onLoad: () => {
             isLoaded.value = true
           }
+        },
+        renderer: {
+          antialias: true,
+          alpha: true
+        },
+        camera: {
+          position: [0, 0, 5],
+          target: [0, 0, 0]
         }
       })
       const basePath = import.meta.env.BASE_URL || '/'
@@ -52,7 +60,7 @@ onMounted(() => {
     }
   }
 
-  setTimeout(loadRobot, 1500)
+  loadRobot()
 
   onUnmounted(() => {
     if (app.value) {
@@ -73,7 +81,6 @@ onMounted(() => {
   height: 300px;
   z-index: 1000;
   will-change: transform;
-  pointer-events: none;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
 }
