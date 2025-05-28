@@ -10,7 +10,7 @@ Este é meu portfólio pessoal, desenvolvido como parte de um trabalho acadêmic
 
 ![image](https://github.com/user-attachments/assets/cc4f5a0a-7129-406e-bc83-347bf41aea2a)
 
-![image](https://github.com/user-attachments/assets/fec643b0-d41b-4473-a1a9-32bc328210d5)
+![image](https://github.com/user-attachments/assets/89fdb4b4-22e2-465a-b90f-255496e4afc7)
 
 
 Site disponível em português e inglês, com opção de troca de idioma no menu.
