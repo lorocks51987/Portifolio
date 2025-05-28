@@ -33,11 +33,18 @@ const router = createRouter({
     {
       path: '/contact',
       name: 'contact',
-      component: ContactView
+      component: ContactView,
+      meta: {
+        title: 'Contact'
+      }
     },
     {
       path: '/contato',
       redirect: '/contact'
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/'
     }
   ],
   scrollBehavior(to, from, savedPosition) {
@@ -47,6 +54,15 @@ const router = createRouter({
       return { top: 0 }
     }
   }
+})
+
+// Adiciona um guarda de navegação para garantir que o componente seja carregado corretamente
+router.beforeEach((to, from, next) => {
+  // Verifica se a rota tem um título definido
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
 })
 
 export default router 

@@ -1,5 +1,5 @@
 <template>
-    <div class="weather fixed top-2 right-2 flex items-center space-x-1 text-white text-xs rounded-md px-2 py-1 mt-3">
+    <div class="weather flex items-center justify-center text-white text-xs rounded-md px-2 py-1">
         <img :src="iconUrl" alt="Ícone do clima" class="w-4 h-4" />
         <span>{{ temp }}°C em {{ city }}</span>
     </div>

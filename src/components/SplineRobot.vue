@@ -82,30 +82,30 @@ canvas {
   will-change: transform;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .robot-container {
     width: 200px;
     height: 200px;
-    top: 10px;
-    left: 10px;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-  .robot-container {
-    width: 250px;
-    height: 250px;
     top: 15px;
     left: 15px;
   }
 }
 
-@media (max-height: 500px) {
+@media (max-width: 480px) {
   .robot-container {
     width: 150px;
     height: 150px;
     top: 10px;
     left: 10px;
+  }
+}
+
+@media (max-height: 500px) {
+  .robot-container {
+    width: 120px;
+    height: 120px;
+    top: 5px;
+    left: 5px;
   }
 }
 </style>
