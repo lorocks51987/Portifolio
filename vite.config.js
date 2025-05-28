@@ -26,5 +26,10 @@ export default defineConfig({
     alias: {
       '@': '/src'
     }
+  },
+  server: {
+    port: 3000,
+    strictPort: true,
+    host: true
   }
 })

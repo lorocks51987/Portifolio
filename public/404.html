@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Redirecionando...</title>
+    <script>
+        // Pega o caminho atual
+        const path = window.location.pathname;
+
+        // Remove o prefixo do repositório se existir
+        const repoPath = '/Portifolio';
+        const cleanPath = path.startsWith(repoPath) ? path.slice(repoPath.length) : path;
+
+        // Redireciona para a página inicial com o hash correto
+        window.location.href = repoPath + '/#' + cleanPath;
+    </script>
+</head>
+
+<body>
+    <p>Redirecionando...</p>
+</body>
+
+</html>
