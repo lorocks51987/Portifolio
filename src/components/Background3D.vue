@@ -1,42 +1,30 @@
 <template>
-  <div class="background-container" :class="{ 'is-loaded': isLoaded }">
+  <div class="background-container">
     <div v-if="!isLoaded" class="loading-placeholder"></div>
-    <canvas id="background3d" v-show="isLoaded"></canvas>
+    <canvas id="background3d" ref="canvasRef" :class="{ 'fade-in': isLoaded }"></canvas>
   </div>
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref, onBeforeMount } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { Application } from '@splinetool/runtime'
 
+const canvasRef = ref(null)
 const app = ref(null)
 const isLoaded = ref(false)
-const isVisible = ref(false)
 let resizeTimeout
-let loadTimeout
-let observer
-
-const isMobile = () => window.innerWidth <= 768
-
-const getQuality = () => {
-  if (isMobile()) return 'low'
-  if (navigator.connection?.saveData) return 'low'
-  if (navigator.connection?.effectiveType === '4g') return 'low'
-  return 'low'
-}
 
 const updateCanvasSize = () => {
-  const canvas = document.getElementById('background3d')
-  if (!canvas) return
+  if (!canvasRef.value) return
 
-  const scale = Math.min(window.devicePixelRatio || 1, isMobile() ? 1 : 1)
+  const scale = Math.min(window.devicePixelRatio || 1, 2)
   const width = window.innerWidth
   const height = window.innerHeight
 
-  canvas.width = width * scale
-  canvas.height = height * scale
-  canvas.style.width = width + 'px'
-  canvas.style.height = height + 'px'
+  canvasRef.value.width = width * scale
+  canvasRef.value.height = height * scale
+  canvasRef.value.style.width = width + 'px'
+  canvasRef.value.style.height = height + 'px'
 }
 
 const debouncedResize = () => {
@@ -44,74 +32,38 @@ const debouncedResize = () => {
   resizeTimeout = setTimeout(updateCanvasSize, 250)
 }
 
-const checkVisibility = () => {
-  const rect = document.querySelector('.background-container')?.getBoundingClientRect()
-  if (rect) {
-    isVisible.value = rect.top < window.innerHeight && rect.bottom > 0
-  }
-}
-
 const loadBackground = async () => {
-  if (isLoaded.value) return
-
-  const canvas = document.getElementById('background3d')
-  if (!canvas) return
+  if (isLoaded.value || !canvasRef.value) return
 
   try {
-    app.value = new Application(canvas, {
-      events: {
-        onLoad: () => {
-          isLoaded.value = true
-        }
+    app.value = new Application(canvasRef.value, {
+      renderer: {
+        antialias: true,
+        alpha: true,
+        preserveDrawingBuffer: true
+      },
+      camera: {
+        fov: 30,
+        position: [0, 0, 25],
+        target: [0, 0, 0]
       }
     })
+
+    await new Promise(resolve => setTimeout(resolve, 500))
     await app.value.load('https://prod.spline.design/dnUzpjAuLSccaqd0/scene.splinecode')
+    
+    await new Promise(resolve => setTimeout(resolve, 300))
+    isLoaded.value = true
   } catch (error) {
     console.error('Erro ao carregar o background:', error)
-    // Fallback para gradiente em caso de erro
     isLoaded.value = true
   }
 }
 
-const observeVisibility = () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      isVisible.value = entry.isIntersecting
-      if (isVisible.value && !isLoaded.value) {
-        loadBackground()
-      }
-    })
-  }, { threshold: 0.1 })
-
-  const container = document.querySelector('.background-container')
-  if (container) {
-    observer.observe(container)
-  }
-  return observer
-}
-
-onBeforeMount(() => {
-  // Removido o early return para mobile
-})
-
 onMounted(() => {
   updateCanvasSize()
   window.addEventListener('resize', debouncedResize)
-  observer = observeVisibility()
-
-  if (document.readyState === 'complete') {
-    checkVisibility()
-    if (isVisible.value) {
-      loadTimeout = setTimeout(loadBackground, 1000)
-    }
-  } else {
-    window.addEventListener('load', () => {
-      checkVisibility()
-      if (isVisible.value) {
-        loadTimeout = setTimeout(loadBackground, 1000)
-      }
-    })
-  }
+  loadBackground()
 })
 
 onUnmounted(() => {
@@ -120,10 +72,6 @@ onUnmounted(() => {
   }
   window.removeEventListener('resize', debouncedResize)
   clearTimeout(resizeTimeout)
-  clearTimeout(loadTimeout)
-  if (observer) {
-    observer.disconnect()
-  }
 })
 </script>
 
@@ -134,17 +82,27 @@ onUnmounted(() => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
-  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+  z-index: 0;
   overflow: hidden;
-  will-change: transform, opacity;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 
-.background-container.is-loaded {
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  pointer-events: all;
+  touch-action: none;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+canvas.fade-in {
   opacity: 1;
 }
 
@@ -154,68 +112,21 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-  opacity: 0.8;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
+  background: #000000;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  background: transparent;
-  transform-origin: center center;
-  transition: transform 0.3s ease;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  image-rendering: optimizeSpeed;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: optimize-contrast;
-  image-rendering: pixelated;
+.loading-placeholder.fade-out {
+  opacity: 0;
 }
 
-@media (max-width: 768px) {
-  canvas {
-    transform: scale(1.2);
-  }
-
-  .background-container {
-    background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-  }
+/* Garante que o canvas fique por baixo mas ainda interativo */
+:deep(.content-wrapper) {
+  pointer-events: none;
 }
 
-@media (max-width: 480px) {
-  canvas {
-    transform: scale(1.4);
-  }
-}
-
-@media (max-height: 500px) {
-  canvas {
-    transform: scale(1.1);
-  }
-}
-
-@supports (-webkit-touch-callout: none) {
-  .background-container {
-    height: -webkit-fill-available;
-    position: absolute;
-  }
-}
-
-/* Fallback para dispositivos que não suportam canvas 3D */
-@supports not (transform: translateZ(0)) {
-  .background-container {
-    background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
-  }
-
-  canvas {
-    display: none;
-  }
+:deep(.content-wrapper > *) {
+  pointer-events: auto;
 }
 </style>

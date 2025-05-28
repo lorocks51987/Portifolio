@@ -20,9 +20,9 @@ onMounted(() => {
       showText.value = true
       setTimeout(() => {
         showRobot.value = true
-      }, 2500) // tempo para o robô aparecer após o texto
-    }, 3000) // tempo para o texto aparecer após o fundo
-  }, 500) // tempo inicial para o fundo aparecer
+      }, 2700) // tempo para o robô aparecer após o texto
+    }, 5000) // tempo para o texto aparecer após o fundo
+  }, 200) // tempo inicial para o fundo aparecer
 })
 </script>
 
@@ -61,12 +61,18 @@ onMounted(() => {
   width: 100%;
   overflow-x: hidden;
   background: transparent;
+  isolation: isolate;
 }
 
 .content-wrapper {
   position: relative;
   z-index: 1;
   padding: 0;
+  pointer-events: none;
+}
+
+.content-wrapper > * {
+  pointer-events: auto;
 }
 
 body {
